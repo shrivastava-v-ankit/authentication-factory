@@ -200,6 +200,8 @@ class MS_OAuth2(AuthDecorators):
                                            tenant_id=tenant_id)
 
                 kwargs["id_token"] = id_token
+                kwargs["access_token"] = result["access_token"]
+                kwargs["refresh_token"] = result["refresh_token"]
 
                 result = f(*args, **kwargs)
                 return result

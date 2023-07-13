@@ -45,16 +45,37 @@ class AuthFactory(object):
             return wrapper
         return decorator
 
-    def callback_handler(self, response_code: str, response_state: str):
+    def callback_handler(self, response_code: str = None, response_state: str = None):
         def decorator(f):
             @wraps(f)
             def wrapper(*args, **kwargs):
+                # If states and code is provided via kwargs, then that
+                # will be treated as priority else will use from function
+                # parameters.
+                if "kwargs" in kwargs and "response_code" in kwargs["kwargs"]:
+                    _response_code = kwargs["kwargs"]["response_code"]
+                else:
+                    _response_code = response_code
+                if "kwargs" in kwargs and "response_state" in kwargs["kwargs"]:
+                    _response_state = kwargs["kwargs"]["response_state"]
+                else:
+                    _response_state = response_state
+
                 @self.auth_obj.callback_handler(config=self.config,
-                                                response_code=response_code,
-                                                response_state=response_state)
+                                                response_code=_response_code,
+                                                response_state=_response_state)
                 def callback_handler(*args, **kwargs):
                     assert ("id_token" in kwargs)
-                    return kwargs["id_token"]
+                    assert ("access_token" in kwargs)
+                    assert ("refresh_token" in kwargs)
+
+                    ret = {
+                        "id_token": kwargs["id_token"],
+                        "access_token": kwargs["access_token"],
+                        "refresh_token": kwargs["refresh_token"]
+                    }
+
+                    return ret
                 result = callback_handler()
 
                 # kwargs["id_token"] = result
