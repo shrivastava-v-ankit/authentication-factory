@@ -38,27 +38,31 @@ VERSION_RE = re.compile(r'''__version__ = ['"]([0-9.]+)['"]''')
 
 base = [
     # Python HTTP for Humans.
-    "requests==2.31.0",
+    "requests==2.32.3",
     # The Microsoft Authentication Library (MSAL) for Python library by supporting authentication of users with Microsoft Azure Active Directory accounts (AAD) and Microsoft Accounts (MSA) using industry standard OAuth2 and OpenID Connect.
-    "msal==1.22.0",
+    "msal==1.29.0",
     # JSON Web Token implementation in Python
-    "PyJWT==2.6.0",
+    "PyJWT==2.8.0",
     # Cryptography is a package which provides cryptographic recipes and primitives to Python developers.
-    "cryptography==36.0.2",
+    "cryptography==42.0.8",
     # Python wrapper module around the OpenSSL library
-    "pyopenssl==22.0.0"
+    "pyopenssl==24.1.0"
 ]
 
 dependencies = [
-    "certifi==2023.5.7",
-    "charset-normalizer==3.2.0",
-    "idna==3.4",
-    "urllib3==1.26.16",
-    "cffi==1.15.1",
-    "pycparser==2.21"
+    "certifi==2024.6.2",
+    "charset-normalizer==3.3.2",
+    "idna==3.7",
+    "urllib3==2.2.2",
+    "cffi==1.16.0",
+    "pycparser==2.22"
 ]
 
-setups = []
+setups = [
+    "gitpython",
+    "setuptools",
+    "wheel"
+]
 
 ir = (base + dependencies)
 requires = ir
@@ -135,7 +139,7 @@ def do_setup():
         setup_requires=setups,
         install_requires=requires,
         license="MIT",
-        python_requires='>=3.7',
+        python_requires='>=3.9, <=3.12',
         platforms='any',
         project_urls={
             'Source': 'https://github.com/shrivastava-v-ankit/authentication-factory/',
@@ -144,14 +148,15 @@ def do_setup():
         classifiers=[
             'Development Status :: 5 - Production/Stable',
             'Environment :: Web Environment',
-            'Framework :: Flask',
+            'Framework :: Streamlit',
             'Intended Audience :: Developers',
             'Natural Language :: English',
             'License :: OSI Approved :: MIT License',
             'Operating System :: OS Independent',
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
             'Programming Language :: Python :: 3.9',
+            'Programming Language :: Python :: 3.10',
+            'Programming Language :: Python :: 3.11',
+            'Programming Language :: Python :: 3.12',
             'Topic :: Software Development :: Libraries :: Python Modules',
             'Topic :: Software Development :: Version Control :: Git',
         ],
