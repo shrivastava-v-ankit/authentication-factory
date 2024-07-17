@@ -38,24 +38,24 @@ VERSION_RE = re.compile(r'''__version__ = ['"]([0-9.]+)['"]''')
 
 base = [
     # Python HTTP for Humans.
-    "requests>2.31.0,<=2.32.3",
+    "requests<=2.32.3",
     # The Microsoft Authentication Library (MSAL) for Python library by supporting authentication of users with Microsoft Azure Active Directory accounts (AAD) and Microsoft Accounts (MSA) using industry standard OAuth2 and OpenID Connect.
-    "msal>1.22.0,<=1.29.0",
+    "msal<=1.29.0",
     # JSON Web Token implementation in Python
-    "PyJWT>2.6.0,<=2.8.0",
+    "PyJWT<=2.8.0",
     # Cryptography is a package which provides cryptographic recipes and primitives to Python developers.
-    "cryptography>36.0.2,<=42.0.8",
+    "cryptography<=42.0.8",
     # Python wrapper module around the OpenSSL library
-    "pyopenssl>22.0.0,<=24.1.0"
+    "pyopenssl<=24.1.0"
 ]
 
 dependencies = [
-    "certifi>2023.5.7,<=2024.6.2",
-    "charset-normalizer>3.2.0,<=3.3.2",
-    "idna>3.4,<=3.7",
-    "urllib3>1.26.16,<=2.2.2",
-    "cffi>1.15.1,<=1.16.0",
-    "pycparser>2.21,<=2.22"
+    "certifi<=2024.7.4",
+    "charset-normalizer<=3.3.2",
+    "idna<=3.7",
+    "urllib3<=2.2.2",
+    "cffi<=1.16.0",
+    "pycparser<=2.22"
 ]
 
 setups = [
